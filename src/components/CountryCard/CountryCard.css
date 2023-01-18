@@ -1,0 +1,16 @@
+.country-card {
+  background-color: var(--color4);
+  border-radius: 10px;
+  color: var(--color1);
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+  width: 200px;
+}
+
+.image {
+}
+
+.name {
+  margin-bottom: 10px;
+}
