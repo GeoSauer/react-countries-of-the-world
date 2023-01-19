@@ -7,10 +7,17 @@ import '../../Controls/Controls.css';
 
 export default function Main() {
   const [continent, setContinent] = React.useState('all');
+  const [searchValue, setSearchValue] = React.useState('');
+
+  //   const [countries, setCountries] = React.useState([]);
+  //   const [error, setError] = React.useState(null);
+  //   const [isLoading, setIsLoading] = React.useState(true);
+
   const { countries, error, isLoading } = useCountries();
   const filtered = countries.filter(
     (country) => country.continent === continent || continent === 'all'
   );
+
   if (isLoading && !error) {
     return (
       <article>
@@ -21,11 +28,13 @@ export default function Main() {
 
   return (
     <>
-      <Controls className="controls" {...{ setContinent, countries }} />
+      <Controls className="controls" {...{ setContinent, countries, setSearchValue }} />
       <main className="country-display">
-        {filtered.map((country) => (
-          <CountryCard key={country.id} {...country} />
-        ))}
+        {filtered
+          .filter(({ name }) => name.includes(searchValue) || name.match(setSearchValue))
+          .map((country) => (
+            <CountryCard key={country.id} {...country} />
+          ))}
         <p style={{ color: 'red', fontWeight: '700' }}>{error}</p>
       </main>
     </>

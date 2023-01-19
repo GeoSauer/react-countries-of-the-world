@@ -12,14 +12,14 @@ export function useCountries() {
     const fetchData = async () => {
       try {
         const resp = await fetchCountries();
-        setIsLoading(false);
         setCountries(resp);
+        setIsLoading(false);
       } catch (error) {
         setError('Oops!  Something went wrong');
       }
     };
     fetchData();
-  }, []);
+  }, [setCountries, setError, setIsLoading]);
 
-  return { countries, error, isLoading };
+  return { countries, setCountries, error, isLoading };
 }
