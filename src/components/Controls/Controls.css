@@ -1,6 +1,9 @@
 .controls {
   /* border: 1px red solid; */
+  background-color: var(--color3);
   height: 40px;
-  margin-top: 20px;
+  margin-top: -40px;
+  position: fixed;
   text-align: center;
+  width: 100%;
 }
