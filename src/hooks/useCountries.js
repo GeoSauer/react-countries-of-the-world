@@ -4,15 +4,15 @@ import { fetchCountries } from '../services/countries';
 export function useCountries() {
   const [countries, setCountries] = React.useState([]);
   const [error, setError] = React.useState(null);
-  //   const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    // setIsLoading(true);
+    setIsLoading(true);
 
     const fetchData = async () => {
       try {
         const resp = await fetchCountries();
-        //   setIsLoading(false);
+        setIsLoading(false);
         setCountries(resp);
       } catch (error) {
         setError('Oops!  Something went wrong');
@@ -29,5 +29,5 @@ export function useCountries() {
   //     );
   //   }
 
-  return { countries, error };
+  return { countries, error, isLoading };
 }
