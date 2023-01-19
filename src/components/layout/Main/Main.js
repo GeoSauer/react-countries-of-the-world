@@ -11,6 +11,13 @@ export default function Main() {
   const filtered = countries.filter(
     (country) => country.continent === continent || continent === 'all'
   );
+  if (isLoading && !error) {
+    return (
+      <article>
+        <p style={{ textAlign: 'center', fontWeight: '700' }}>Loading...</p>
+      </article>
+    );
+  }
 
   return (
     <>
@@ -19,7 +26,7 @@ export default function Main() {
         {filtered.map((country) => (
           <CountryCard key={country.id} {...country} />
         ))}
-        <p style={{ color: 'red' }}>{error}</p>
+        <p style={{ color: 'red', fontWeight: '700' }}>{error}</p>
       </main>
     </>
   );

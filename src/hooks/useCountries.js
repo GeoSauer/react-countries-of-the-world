@@ -21,13 +21,5 @@ export function useCountries() {
     fetchData();
   }, []);
 
-  //   if (isLoading) {
-  //     return (
-  //       <article>
-  //         <p>Loading...</p>
-  //       </article>
-  //     );
-  //   }
-
   return { countries, error, isLoading };
 }
