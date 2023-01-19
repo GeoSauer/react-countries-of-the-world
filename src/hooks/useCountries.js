@@ -19,7 +19,7 @@ export function useCountries() {
       }
     };
     fetchData();
-  }, [setCountries, setError, setIsLoading]);
+  }, []);
 
   return { countries, setCountries, error, isLoading };
 }

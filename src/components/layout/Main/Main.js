@@ -4,6 +4,8 @@ import CountryCard from '../../CountryCard/CountryCard';
 import Controls from '../../Controls/Controls';
 import './Main.css';
 import '../../Controls/Controls.css';
+import { TripleMaze } from 'react-spinner-animated';
+import 'react-spinner-animated/dist/index.css';
 
 export default function Main() {
   const [continent, setContinent] = React.useState('all');
@@ -21,7 +23,7 @@ export default function Main() {
   if (isLoading && !error) {
     return (
       <article>
-        <p style={{ textAlign: 'center', fontWeight: '700' }}>Loading...</p>
+        <TripleMaze text={'Loading...'} />
       </article>
     );
   }
