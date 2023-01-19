@@ -8,12 +8,8 @@ import { TripleMaze } from 'react-spinner-animated';
 import 'react-spinner-animated/dist/index.css';
 
 export default function Main() {
-  const [continent, setContinent] = React.useState('all');
   const [searchValue, setSearchValue] = React.useState('');
-
-  //   const [countries, setCountries] = React.useState([]);
-  //   const [error, setError] = React.useState(null);
-  //   const [isLoading, setIsLoading] = React.useState(true);
+  const [continent, setContinent] = React.useState('all');
 
   const { countries, error, isLoading } = useCountries();
   const filtered = countries.filter(
