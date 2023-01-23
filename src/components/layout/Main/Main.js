@@ -10,9 +10,11 @@ import 'react-spinner-animated/dist/index.css';
 export default function Main() {
   const [searchValue, setSearchValue] = React.useState('');
   const [continent, setContinent] = React.useState('all');
+  const [order, setOrder] = React.useState('');
 
-  const { countries, error, isLoading } = useCountries();
-  const filtered = countries.filter(
+  const { countries, error, isLoading } = useCountries(order);
+
+  const filteredCountries = countries.filter(
     (country) => country.continent === continent || continent === 'all'
   );
 
@@ -26,9 +28,12 @@ export default function Main() {
 
   return (
     <>
-      <Controls className="controls" {...{ setContinent, countries, setSearchValue }} />
+      <Controls
+        className="controls"
+        {...{ setContinent, countries, setSearchValue, order, setOrder }}
+      />
       <main className="country-display">
-        {filtered
+        {filteredCountries
           .filter(({ name }) => name.includes(searchValue) || name.match(setSearchValue))
           .map((country) => (
             <CountryCard key={country.id} {...country} />

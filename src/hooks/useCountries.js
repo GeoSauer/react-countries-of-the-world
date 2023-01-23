@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetchCountries } from '../services/countries';
 
-export function useCountries() {
+export function useCountries(order, searchByName) {
   const [countries, setCountries] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -11,7 +11,7 @@ export function useCountries() {
 
     const fetchData = async () => {
       try {
-        const resp = await fetchCountries();
+        const resp = await fetchCountries(order, searchByName);
         setCountries(resp);
         setIsLoading(false);
       } catch (error) {
@@ -19,7 +19,7 @@ export function useCountries() {
       }
     };
     fetchData();
-  }, []);
+  }, [order, searchByName]);
 
   return { countries, setCountries, error, isLoading };
 }
